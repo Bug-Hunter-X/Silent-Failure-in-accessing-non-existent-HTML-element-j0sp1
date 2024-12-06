@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Uncommon HTML Bug</title>
+</head>
+<body>
+  <div id="myDiv">
+    This text should be visible.
+  </div>
+  <script>
+    // Incorrectly attempting to modify content of non-existent element
+    document.getElementById('nonExistentElement').textContent = "This should not appear";
+    //This will result in a silent failure.
+    //Correct way to handle potential errors
+    const element = document.getElementById('myDiv');
+    if(element){
+      element.textContent = "This text replaces the original.";
+    }else{
+      console.error('Element not found');
+    }
+  </script>
+</body>
+</html>
